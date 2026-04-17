@@ -21,8 +21,8 @@ sentences_rdd = sc.parallelize(sentences)
 # Transformation (replace with your own logic)
 transformed = sentences_rdd.map(lambda s: s.upper())
 
-# Show some results (will go to YARN driver logs in cluster mode)
-for line in transformed.take(100):
-    print(line)
-
+# Save to HDFS (change the path to something you have write access to)
+output_path = "hdfs:///tmp/Week4_output"
+transformed.saveAsTextFile(output_path)
 spark.stop()
+
