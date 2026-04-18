@@ -66,8 +66,8 @@ classes = np.unique(y)
 weights = compute_class_weight(class_weight="balanced", classes=classes, y=y)
 class_weights = {
     'Low': 1.0,
-    'Medium': 1.5,
-    'High': 4.0
+    'Medium': 2.0,
+    'High': 6.0
 }
 
 print("Class weights:", class_weights)
