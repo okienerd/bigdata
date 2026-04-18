@@ -64,7 +64,11 @@ print("Numeric columns:", len([c for c in feature_cols if c not in cat_features]
 # -------------------------
 classes = np.unique(y)
 weights = compute_class_weight(class_weight="balanced", classes=classes, y=y)
-class_weights = dict(zip(classes, weights))
+class_weights = {
+    'Low': 1.0,
+    'Medium': 1.5,
+    'High': 4.0
+}
 
 print("Class weights:", class_weights)
 print("Target distribution:")
@@ -87,7 +91,7 @@ for fold, (train_idx, valid_idx) in enumerate(skf.split(X, y), start=1):
     model = CatBoostClassifier(
         loss_function="MultiClass",
         eval_metric="Accuracy",   # training metric
-        iterations=1500,
+        iterations=1000,
         learning_rate=0.05,
         depth=8,
         l2_leaf_reg=5,
