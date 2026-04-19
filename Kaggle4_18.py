@@ -204,6 +204,9 @@ print("Best tuned OOF Balanced Accuracy:", round(best_score, 6))
 # model A = your BEST model predictions
 # model B = your seed averaging predictions
 
+test_preds_model_A = test_proba_total
+test_preds_model_B = test_proba_total
+
 final_test_preds = 0.6 * test_preds_model_A + 0.4 * test_preds_model_B
 
 # =========================
